@@ -1,7 +1,7 @@
-smartspec-buildroot
-===================
+smartinstr-buildroot
+====================
 
-This repo contains the buildroot files to build the Smart Spectrometer target root filesystem and the toolchain.
+This repo contains the buildroot files to build the Smart Instrument target root filesystem and the toolchain.
 
 Forked from the repo at https://github.com/linux4sam/buildroot-at91
 
