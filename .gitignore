@@ -11,3 +11,7 @@
 *.orig
 *.rej
 *~
+
+# Ignore Vim swap files
+.*.swp
+*.swp
