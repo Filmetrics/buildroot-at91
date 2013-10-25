@@ -10,6 +10,7 @@
 /*.diff
 *.orig
 *.rej
+tags
 *~
 
 # Ignore Vim swap files
