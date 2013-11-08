@@ -20,6 +20,12 @@ config BR2_PACKAGE_GNUPG_RSA
 	help
 	  Support for RSA public key algorithm
 
+config BR2_PACKAGE_GNUPG_FULL
+	bool "Full featured version"
+	help
+	  Enables the full featured version of GnuPG (no
+	  --enable-minimal option)
+
 config BR2_PACKAGE_GNUPG_GPGV
 	bool "gpgv"
 	help
