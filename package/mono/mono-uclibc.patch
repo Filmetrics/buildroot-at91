@@ -1,0 +1,15 @@
+--- mono-3.2.5.orig/libgc/include/gc.h	2005-12-09 20:26:20 +0000
++++ mono-3.2.5/libgc/include/gc.h	2005-12-09 20:27:22 +0000
+@@ -483,12 +483,6 @@
+
+ #ifdef __linux__
+ # include <features.h>
+-# if (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 1 || __GLIBC__ > 2) \
+-     && !defined(__ia64__)
+-#   ifndef GC_HAVE_BUILTIN_BACKTRACE
+-#     define GC_HAVE_BUILTIN_BACKTRACE
+-#   endif
+-# endif
+ # if defined(__i386__) || defined(__x86_64__)
+ #   define GC_CAN_SAVE_CALL_STACKS
+ # endif
