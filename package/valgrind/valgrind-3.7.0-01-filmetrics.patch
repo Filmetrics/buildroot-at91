@@ -1,0 +1,28 @@
+The build would break without this patch.
+
+Raphael Oberson, Filmetrics Inc., 2014-05-02
+
+diff -ur valgrind-3.7.0.orig/configure valgrind-3.7.0/configure
+--- valgrind-3.7.0.orig/configure	2011-11-05 04:24:39.000000000 -0700
++++ valgrind-3.7.0/configure	2014-05-02 11:33:21.906289592 -0700
+@@ -5279,7 +5279,7 @@
+         ARCH_MAX="s390x"
+         ;;
+ 
+-     armv7*)
++     arm*)
+ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ok (${host_cpu})" >&5
+ $as_echo "ok (${host_cpu})" >&6; }
+ 	ARCH_MAX="arm"
+diff -ur valgrind-3.7.0.orig/configure.in valgrind-3.7.0/configure.in
+--- valgrind-3.7.0.orig/configure.in	2011-11-05 04:13:30.000000000 -0700
++++ valgrind-3.7.0/configure.in	2014-05-02 11:33:15.946289397 -0700
+@@ -175,7 +175,7 @@
+         ARCH_MAX="s390x"
+         ;;
+ 
+-     armv7*)
++     arm*)
+ 	AC_MSG_RESULT([ok (${host_cpu})])
+ 	ARCH_MAX="arm"
+ 	;;
