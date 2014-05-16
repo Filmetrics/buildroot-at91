@@ -1,0 +1,48 @@
+Patch for the GCC compiler package; will not build in Kubuntu 14.10 without this
+patch.
+
+These changes can be found in the official GCC SVN repository, revision 191605.
+
+See: http://gcc.gnu.org/viewcvs/gcc?view=revision&revision=191605
+
+See also bug report #56927:
+
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=56927
+
+Raphael Oberson, Filmetrics Inc., 2014-05-16
+
+diff -urp gcc-4.7.2-orig/gcc/ChangeLog gcc-4.7.2/gcc/ChangeLog
+--- gcc-4.7.2-orig/gcc/ChangeLog	2012-09-19 23:53:53.000000000 -0700
++++ gcc-4.7.2/gcc/ChangeLog	2014-05-16 15:16:49.720489349 -0700
+@@ -1,3 +1,12 @@
++2012-09-21  Richard Guenther  <rguenther@suse.de>
++
++	PR middle-end/54638
++	Backport from mainline
++	2012-04-19  Richard Guenther  <rguenther@suse.de>
++
++	* ira-int.h (ira_allocno_object_iter_cond): Avoid out-of-bound
++	array access.
++
+ 2012-09-20  Release Manager
+ 
+ 	* GCC 4.7.2 released.
+diff -urp gcc-4.7.2-orig/gcc/ira-int.h gcc-4.7.2/gcc/ira-int.h
+--- gcc-4.7.2-orig/gcc/ira-int.h	2012-01-19 12:46:31.000000000 -0800
++++ gcc-4.7.2/gcc/ira-int.h	2014-05-16 15:17:55.332487117 -0700
+@@ -1138,8 +1138,13 @@ static inline bool
+ ira_allocno_object_iter_cond (ira_allocno_object_iterator *i, ira_allocno_t a,
+ 			      ira_object_t *o)
+ {
+-  *o = ALLOCNO_OBJECT (a, i->n);
+-  return i->n++ < ALLOCNO_NUM_OBJECTS (a);
++  int n = i->n++;
++  if (n < ALLOCNO_NUM_OBJECTS (a))
++    {
++      *o = ALLOCNO_OBJECT (a, n);
++      return true;
++    }
++  return false;
+ }
+ 
+ /* Loop over all objects associated with allocno A.  In each
