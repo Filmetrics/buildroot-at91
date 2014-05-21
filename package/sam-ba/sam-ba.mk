@@ -4,10 +4,11 @@
 #
 ################################################################################
 
-SAM_BA_SITE    = http://www.atmel.com/dyn/resources/prod_documents/
+SAM_BA_SITE    = http://www.atmel.com/Images/
 SAM_BA_VERSION = 2.12
 SAM_BA_SOURCE  = sam-ba_$(SAM_BA_VERSION).zip
-SAM_BA_PATCH = sam-ba_$(SAM_BA_VERSION)_patch5.gz
+SAM_BA_PATCH = patch6.gz
+## was: SAM_BA_PATCH = sam-ba_$(SAM_BA_VERSION)_patch5.gz
 SAM_BA_LICENSE = BSD-like (partly binary-only)
 SAM_BA_LICENSE_FILES = doc/readme.txt
 
