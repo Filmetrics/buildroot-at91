@@ -1,0 +1,33 @@
+This patch file changes the DDRAM memory configuration in the TCL config script
+for the SAMA5D3X Eval Kit from DDR2 16-bit to the Low Power DDR2 (LPDDR2) 32-bit
+chip found on the Smart Instrument board.
+
+Raphael Oberson, Filmetrics Inc., 2015-04-06
+
+diff -apurN host-sam-ba-2.15-orig/tcl_lib/at91sama5d3x-ek/at91sama5d3x-ek.tcl host-sam-ba-2.15/tcl_lib/at91sama5d3x-ek/at91sama5d3x-ek.tcl
+--- host-sam-ba-2.15-orig/tcl_lib/at91sama5d3x-ek/at91sama5d3x-ek.tcl	2015-02-06 13:40:28.000000000 -0800
++++ host-sam-ba-2.15/tcl_lib/at91sama5d3x-ek/at91sama5d3x-ek.tcl	2015-04-06 15:04:50.850172658 -0700
+@@ -71,14 +71,20 @@ namespace eval BOARD {
+     variable extRamVdd 0
+     # External SDRAM = 0 / External DDR2 = 1 / LPDDR = 2
+ 
+-    variable extRamType 1
++    # Was: variable extRamType 1
++
+ #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ #For LPDDR change me here
+-#variable extRamType 2
++# Changed extRamType from 1 to 2 for the Low Power DDR2 chip on the Smart
++# Instrument board. -- 2015-04-06 RGO Filmetrics Inc.
++    variable extRamType 2
+ #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ 
+     # Set bus width (16 or 32)
+-    variable extRamDataBusWidth 16
++    # Changed extRamDataBusWidth from 16 to 32 for the Low Power DDR2 chip on
++    # the Smart Instrument board. -- 2015-04-06 RGO Filmetrics Inc.
++    # Was: variable extRamDataBusWidth 16
++    variable extRamDataBusWidth 32
+     # DDRAM Model (0: MT47H64M16HR, 1: MT47H128M16RT
+     variable extDDRamModel 1
+ 
